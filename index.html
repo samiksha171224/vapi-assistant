@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Vapi Voice Assistant</title>
+    <script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web-sdk"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 40px;
+        background-color: #f4f4f9;
+      }
+      h2 {
+        color: #333;
+      }
+      button {
+        padding: 15px 30px;
+        margin: 10px;
+        font-size: 18px;
+        border-radius: 10px;
+        border: none;
+        background-color: #4CAF50;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>🎙️ Talk to Your Vapi Assistant</h2>
+    <button onclick="vapi.start()">Start Speaking</button>
+    <button onclick="vapi.stop()">Stop</button>
+
+    <script>
+      const vapi = window.vapi.createClient({
+        apiKey: "dd7e8a78-95a1-4113-8d6f-100c6272ee81",
+        assistant: "cce4cefd-cd72-4826-8e77-664da335687d",
+        voice: true
+      });
+
+      vapi.on("speech", (msg) => {
+        console.log("Assistant:", msg.transcript);
+      });
+    </script>
+  </body>
+</html>
